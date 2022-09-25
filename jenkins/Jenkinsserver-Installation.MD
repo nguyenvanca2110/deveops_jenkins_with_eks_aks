@@ -16,8 +16,15 @@ yum install java-1.8*
 Lets install java and set the java home
 ```sh
 java -version
-find /usr/lib/jvm/java-1.8* | head -n 3
-#JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+
+# Chose the right version of JAVA 
+sudo alternatives --config java
+
+# Find the JAVA version is using by CentOS  (Jenkins now is working with Java-11 or 17) 
+find /usr/lib/jvm/java-11* | head -n 3
+
+# Open ROOT account and add the below command in the '.bash_profile'
+#JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.16.1.1-1.el7_9.x86_64
 export JAVA_HOME
 PATH=$PATH:$JAVA_HOME
 # To set it permanently update your .bash_profile
@@ -67,8 +74,8 @@ http://YOUR-SERVER-PUBLIC-IP:8080
 - Create another admin user id
 
 ### Test Jenkins Jobs
-1. Create “new item”
-1. Enter an item name – `My-First-Project`
+1. Create ï¿½new itemï¿½
+1. Enter an item name ï¿½ `My-First-Project`
    - Chose `Freestyle` project
 1. Under Build section
 	Execute shell : echo "Welcome to Jenkins Demo"
