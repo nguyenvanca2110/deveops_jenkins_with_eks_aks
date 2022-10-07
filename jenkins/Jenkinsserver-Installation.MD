@@ -3,25 +3,31 @@
 ### Prerequisites 
  1. EC2 Linux 7.x Instance
 
- 2. Java v1.8.x
+ 2. Java v11.x
 
 ## Install Java
-We will be using open java for our demo, Get latest version from http://openjdk.java.net/install/
+# We will be using open java for our demo, Get latest version from http://openjdk.java.net/install/
 ```sh
-yum install java-1.8*
+yum install java-11*
 #yum -y install java-1.8.0-openjdk
 ```
 
 ### Confirm Java Version
-Lets install java and set the java home
+# Lets install java and set the java home
 ```sh
 java -version
 
-# Chose the right version of JAVA 
+# Chose the right version of JAVA --> Choose JAVA 11 
 sudo alternatives --config java
+sudo alternatives --config javac
 
 # Find the JAVA version is using by CentOS  (Jenkins now is working with Java-11 or 17) 
 find /usr/lib/jvm/java-11* | head -n 3
+# The result is 
+/usr/lib/jvm/java-11
+/usr/lib/jvm/java-11-openjdk
+/usr/lib/jvm/java-11-openjdk-11.0.16.1.1-1.el7_9.x86_64
+
 
 # Open ROOT account and add the below command in the '.bash_profile'
 #JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.16.1.1-1.el7_9.x86_64
@@ -30,16 +36,18 @@ PATH=$PATH:$JAVA_HOME
 # To set it permanently update your .bash_profile
 source ~/.bash_profile
 ```
-_The output should be something like this,_
+# _The output should be something like this,_
 ```
-[root@~]# java -version
-openjdk version "1.8.0_151"
-OpenJDK Runtime Environment (build 1.8.0_151-b12)
-OpenJDK 64-Bit Server VM (build 25.151-b12, mixed mode)
+[root@localhost centos]# java --version
+openjdk 11.0.16.1 2022-08-12 LTS
+OpenJDK Runtime Environment (Red_Hat-11.0.16.1.1-1.el7_9) (build 11.0.16.1+1-LTS)
+OpenJDK 64-Bit Server VM (Red_Hat-11.0.16.1.1-1.el7_9) (build 11.0.16.1+1-LTS, mixed mode, sharing)
 ```
 
 ## Install Jenkins
-You can install jenkins using the rpm or by setting up the repo. We will setup the repo so that we can update it easily in future.
+# You can install jenkins using the rpm or by setting up the repo. We will setup the repo so that we can update it easily in future.
+# We will install the latest stable version of Jenkins  
+# https://www.jenkins.io/doc/book/installing/linux/#red-hat-centos
 Get latest version of jenkins from https://pkg.jenkins.io/redhat-stable/
 ```sh
 yum -y install wget
@@ -47,6 +55,33 @@ wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenki
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum -y install jenkins
 ```
+#------- Ubuntu
+
+find /usr/lib/jvm/java-11* | head -n 3
+
+# Open ROOT account and add the below command in the '.bash_profile'
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export JAVA_HOME
+PATH=$PATH:$JAVA_HOME
+# To set it permanently update your .bash_profile
+source ~/.profile
+```
+
+
+sudo apt update
+sudo apt install openjdk-11-jre
+java -version
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+#------
+
 
 ### Start Jenkins
 ```sh
@@ -55,10 +90,15 @@ systemctl start jenkins
 
 # Setup Jenkins to start at boot,
 systemctl enable jenkins
+OR 
+chkconfig jenkins on
 ```
 
+### Check the port of server is using 
+netstat -ntlp 
+
 #### Accessing Jenkins
-By default jenkins runs at port `8080`, You can access jenkins at
+# By default jenkins runs at port `8080`, You can access jenkins at
 ```sh
 http://YOUR-SERVER-PUBLIC-IP:8080
 ```

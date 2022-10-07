@@ -1,4 +1,5 @@
-## Install Docker
+## Jenkins server need to install Docker because Jenkin need to push image to docker registry 
+## Install Docker 
 ```sh
 yum install docker
 systemctl start docker

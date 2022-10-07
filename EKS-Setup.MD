@@ -6,21 +6,21 @@ You can follow same procedure in the official  AWS document [Getting started wit
   - an EC2 Instance (Kubernetes Management Host)
 
 # 
-1. Install and setup kubectl on Management host
-   a. Download kubectl version 1.19.6 
-   b. Grant execution permissions to kubectl executable   
-   c. Move kubectl onto /usr/local/bin   
-   d. Test that your kubectl installation was successful    
+# 1. Install and setup kubectl on Management host
+#   a. Download kubectl version 1.19.6 
+#   b. Grant execution permissions to kubectl executable   
+#   c. Move kubectl onto /usr/local/bin   
+#   d. Test that your kubectl installation was successful    
    ```sh 
    curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
    chmod +x ./kubectl
    mv ./kubectl /usr/local/bin 
    kubectl version --short --client
    ```
-2. Install and setup eksctl on Management Host   
-   a. Download and extract the latest release   
-   b. Move the extracted binary to /usr/local/bin   
-   c. Test that your eksclt installation was successful   
+# 2. Install and setup eksctl on Management Host   
+#   a. Download and extract the latest release   
+#   b. Move the extracted binary to /usr/local/bin   
+#   c. Test that your eksclt installation was successful   
    ```sh
    curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
    sudo mv /tmp/eksctl /usr/local/bin

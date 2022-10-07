@@ -1,6 +1,6 @@
 # Install and Configure Maven & git in Jenkins server
 
-## Install Maven
+## Install Maven for Jenkins server 
 ```sh
 yum install wget
 wget https://mirror.lyrahosting.com/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
