@@ -55,7 +55,15 @@ wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenki
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum -y install jenkins
 ```
-#------- Ubuntu
+
+# Centos often block port, so need to open the Jenkins port 8080 
+firewall-cmd --zone=public --permanent --add-port=8080/tcp
+
+# Reload firewall 
+
+firewall-cmd --reload
+
+------- Ubuntu
 
 find /usr/lib/jvm/java-11* | head -n 3
 
@@ -66,7 +74,6 @@ PATH=$PATH:$JAVA_HOME
 # To set it permanently update your .bash_profile
 source ~/.profile
 ```
-
 
 sudo apt update
 sudo apt install openjdk-11-jre
@@ -79,7 +86,6 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins
-
 #------
 
 
@@ -114,8 +120,8 @@ http://YOUR-SERVER-PUBLIC-IP:8080
 - Create another admin user id
 
 ### Test Jenkins Jobs
-1. Create �new item�
-1. Enter an item name � `My-First-Project`
+1. Create �new item
+1. Enter an item name  `My-First-Project`
    - Chose `Freestyle` project
 1. Under Build section
 	Execute shell : echo "Welcome to Jenkins Demo"
