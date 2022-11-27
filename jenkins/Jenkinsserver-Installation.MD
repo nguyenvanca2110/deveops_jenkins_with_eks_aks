@@ -26,7 +26,7 @@ find /usr/lib/jvm/java-11* | head -n 3
 # The result is 
 /usr/lib/jvm/java-11
 /usr/lib/jvm/java-11-openjdk
-/usr/lib/jvm/java-11-openjdk-11.0.16.1.1-1.el7_9.x86_64
+/usr/lib/jvm/java-11-openjdk-11.0.17.0.8-2.el7_9.x86_64
 
 
 # Open ROOT account and add the below command in the '.bash_profile'
@@ -86,7 +86,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins
-#------
+#----- end Ubuntu -------
 
 
 ### Start Jenkins
@@ -120,7 +120,7 @@ http://YOUR-SERVER-PUBLIC-IP:8080
 - Create another admin user id
 
 ### Test Jenkins Jobs
-1. Create �new item
+1. Create new item
 1. Enter an item name  `My-First-Project`
    - Chose `Freestyle` project
 1. Under Build section

@@ -6,7 +6,7 @@ systemctl start docker
 systemctl enable docker
 ```
 
-## provide permissions to jenkins user in jenkins server to access docker
+## Provide permissions to "jenkins" user in Jenkins server to access and use Docker
 ```sh
   sudo groupadd docker
   sudo usermod -aG docker jenkins
