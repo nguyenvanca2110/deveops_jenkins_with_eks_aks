@@ -1,6 +1,8 @@
 # Setup Kubernetes on Amazon EKS
 
-You can follow same procedure in the official  AWS document [Getting started with Amazon EKS – eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)   
+# You can follow same procedure in the official  AWS document
+# [Getting started with Amazon EKS – eksctl]
+# (https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)   
 
 #### Pre-requisites: 
   - an EC2 Instance (Kubernetes Management Host)
@@ -27,7 +29,7 @@ You can follow same procedure in the official  AWS document [Getting started wit
    eksctl version
    ```
   
-3. Create an IAM Role and attache it to EC2 instance Management Host  
+# 3. Create an IAM Role and attache it to EC2 instance Management Host  
    `Note: create IAM user with programmatic access if your bootstrap system is outside of AWS`   
    IAM user should have access to   
    IAM   
@@ -35,7 +37,7 @@ You can follow same procedure in the official  AWS document [Getting started wit
    VPC    
    CloudFormation
 
-4. Create EKS cluster and nodes from EC2 Management Host
+# 4. Create EKS cluster and nodes from EC2 Management Host
    ```sh
    eksctl create cluster --name cluster-name  \
    --region region-name \
@@ -50,12 +52,12 @@ You can follow same procedure in the official  AWS document [Getting started wit
    --node-type t2.medium \
     ```
 
-5. To delete the EKS clsuter 
+# 5. To delete the EKS clsuter 
    ```sh 
    eksctl delete cluster cloudfreak-cluster --region ap-south-1
    ```
    
-6. Validate your cluster using by creating by checking nodes and by creating a pod 
+# 6. Validate your cluster using by creating by checking nodes and by creating a pod 
    ```sh 
    kubectl get nodes
    kubectl run pod tomcat --image=tomcat 
