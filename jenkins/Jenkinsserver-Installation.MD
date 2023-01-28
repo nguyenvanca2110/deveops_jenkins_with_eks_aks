@@ -128,3 +128,24 @@ http://YOUR-SERVER-PUBLIC-IP:8080
 1. Save your job 
 1. Build job
 1. Check "console output"
+
+
+### To login to Jenkins by CLI
+vi /etc/passwd
+## -- Change the line 
+jenkins:x:988:982:Jenkins Automation Server:/var/lib/jenkins:/bin/false
+## become 
+jenkins:x:988:982:Jenkins Automation Server:/var/lib/jenkins:/bin/bash
+
+
+## Provide permissions to "jenkins" user in Jenkins server to access and use Docker
+```sh
+  sudo groupadd docker
+  sudo usermod -aG docker jenkins
+  sudo chmod 777 /var/run/docker.sock
+```
+## Add Jenkins user into sudoers file to get sudo access (Using application does not need to enter password)
+```sh
+   vi /etc/sudoers
+   jenkins ALL=(ALL) NOPASSWD: ALL
+```   
