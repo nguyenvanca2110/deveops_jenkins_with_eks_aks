@@ -149,3 +149,17 @@ jenkins:x:988:982:Jenkins Automation Server:/var/lib/jenkins:/bin/bash
    vi /etc/sudoers
    jenkins ALL=(ALL) NOPASSWD: ALL
 ```   
+
+
+### ==== Difference between 'su jenkins' and 'su - jenkins'
+### 'su jenkins' come to current folder 
+azureuser@Jenkins-VM:~$ sudo su jenkins
+jenkins@Jenkins-VM:/home/azureuser$ cd
+jenkins@Jenkins-VM:~$ exit
+exit
+
+### 'su - jenkins' come to 'jenkins' user folder 
+azureuser@Jenkins-VM:~$ sudo su - jenkins
+jenkins@Jenkins-VM:~$ 
+
+
